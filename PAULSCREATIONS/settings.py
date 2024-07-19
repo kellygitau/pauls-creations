@@ -98,6 +98,11 @@ DATABASES = {
 }
 # security warning: Do not run this in production with debug turned on
 DEBUG = True
+ALLOWED_HOSTS = [
+    '.railway.app',
+    ]
+if DEBUG:
+    ALLOWED_HOSTS += ['localhost', '127.0.0.1']
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_HOST_USER = 'gitaukelly72@gmail.com'
 DEFAULT_FROM_EMAIL = 'gkellyn2002@gmail.com'
