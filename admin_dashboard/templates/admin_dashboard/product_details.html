@@ -1,0 +1,115 @@
+{% extends "admin_dashboard/base.html" %}
+{% load static %} 
+{% block title%}{{product.variation}} - details{% endblock title %} 
+{% block content %}
+<div id="contentTab">
+  <div class="title">PRODUCT DETAIL</div>
+  <div class="detail">
+    <div class="image">
+      <img src="img/A4_funeral_program.png" />
+    </div>
+    <div class="content">
+      <h1 class="name">LD02 LOUNGE CHAIR</h1>
+      <div class="price">$250</div>
+      <div class="buttons">
+        <button>Check Out</button>
+        <button class="addCart" data-id="2">
+          Add To Cart
+          <span>
+            <svg
+              class=""
+              aria-hidden="true"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 18 20"
+            >
+              <path
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 15a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0h8m-8 0-1-4m9 4a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-9-4h10l2-7H3m2 7L3 4m0 0-.792-3H1"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+      <div class="description">
+        $Expertly rendered by Carl Hansen &amp; Søn, the lounge chair—first
+        introduced in 1951 and enduring ever since—is available in oak or as a
+        combination of oak and walnut, sourced from sustainable forestry. Choose
+        from seat and back upholstery in a selection of leather options or in a
+        custom fabric.
+      </div>
+    </div>
+  </div>
+
+  <div class="title">Similar product</div>
+  {% comment %} <div class="listProduct">
+    <div class="item">
+      <a href="/detail.html?id=1">
+        <img src="img/A4_letterhead.png" />
+      </a>
+      <h2>LD01 LOUNGE CHAIR</h2>
+      <div class="price">$200</div>
+      <button class="addCart" data-id="1">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=2">
+        <img src="img/A5_flyer.png" />
+      </a>
+      <h2>LD02 LOUNGE CHAIR</h2>
+      <div class="price">$250</div>
+      <button class="addCart" data-id="2">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=3">
+        <img src="img/A5_funeral_program.png" />
+      </a>
+      <h2>LD03 LOUNGE CHAIR</h2>
+      <div class="price">$290</div>
+      <button class="addCart" data-id="3">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=4">
+        <img src="img/A6_reciept_book.png" />
+      </a>
+      <h2>LD04 LOUNGE CHAIR</h2>
+      <div class="price">$200</div>
+      <button class="addCart" data-id="4">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=5">
+        <img src="img/A7_flyer.png" />
+      </a>
+      <h2>LD05 LOUNGE CHAIR</h2>
+      <div class="price">$300</div>
+      <button class="addCart" data-id="5">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=6">
+        <img src="img/backdrop_banner.png" />
+      </a>
+      <h2>LD06 LOUNGE CHAIR</h2>
+      <div class="price">$200</div>
+      <button class="addCart" data-id="6">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=7">
+        <img src="img/bookmarks.png" />
+      </a>
+      <h2>LD07 LOUNGE CHAIR</h2>
+      <div class="price">$200</div>
+      <button class="addCart" data-id="7">Add To Cart</button>
+    </div>
+    <div class="item">
+      <a href="/detail.html?id=8">
+        <img src="img/broad_base_banner.png" />
+      </a>
+      <h2>LD08 LOUNGE CHAIR</h2>
+      <div class="price">$200</div>
+      <button class="addCart" data-id="8">Add To Cart</button>
+    </div>
+  </div> {% endcomment %}
+</div>
+{% endblock content %}

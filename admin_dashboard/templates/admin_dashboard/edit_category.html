@@ -1,0 +1,25 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit {{category.name}}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit Category  {{category.name}}</h6>
+                <form id="category_edit_form" method="post" action=".">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{category_edit_form.name}}
+                        <label for="floatingInput">Name Of Category</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

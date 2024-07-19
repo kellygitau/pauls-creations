@@ -1,0 +1,214 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --bg: #07051a;
+    --text: #efeefc;
+    --btnprimary: #03020d;
+    --btnsecondary: #24c231;
+    --font_family: lato;
+    --fontsize: 1.5rem;
+    --padding: 1rem;
+    --margin: 10px;
+    --width: 100dvw;
+    --height: 100dvh;
+    --gradient: linear-gradient(180deg, #e64980 5%, #ff8787 95%);
+    --logo-bg-color: #e5e6e8;
+    --letter-color: #9b94c8;
+    --pen-color: #04a551;
+    --typewriter-time: 6s;
+    --scroll_padding: 5rem;
+}
+
+body {
+    width: 100vw;
+    overflow-x : hidden;
+    overflow-y: auto;
+    background-color: var(--bg);
+    display: grid;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    display: none;
+    opacity: 0;
+    border-radius: 100vw;
+    margin-block: .5rem;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--text), var(--btnsecondary));
+    border: .25rem solid linear-gradient(var(--bg), var(--letter-color));
+    border-radius: 100vw;
+}
+
+.form-container {
+    width: 75%;
+    position: absolute;
+    top: var(--scroll_padding);
+    left: 50%;
+    transform: translateX(-37.5%);
+    color: var(--text);
+}
+
+.form-container form {
+    width: 100%;
+    display: grid;
+    font-size: 1.125rem;
+    /* position: absolute;
+    left: 50%;
+    transform: translateX(-50%); */
+}
+
+.value-container {
+    width: 100%;
+    height: 2rem;
+    text-align: center;
+    margin-block: 1rem;
+    background-color: var(--btnsecondary);
+}
+
+.form-container form input {
+    width: 75%;
+    height: 1.75rem;
+    background-color: var(--btnprimary);
+    color: var(--text);
+    caret-color: var(--text);
+    padding-inline: var(--padding);
+    border: var(--btnsecondary) 1px solid;
+    border-radius: 5px;
+}
+
+.form-container form textarea,
+.form-container form select {
+    width: 75%;
+    background-color: var(--btnprimary);
+    color: var(--text);
+    caret-color: var(--text);
+    padding-inline: var(--padding);
+    padding-block: .5rem;
+    border: var(--btnsecondary) 1px solid;
+    border-radius: 5px;
+}
+
+.form-container form label {
+    font-weight: 500;
+    padding-block: 1rem;
+}
+
+.options {
+    width: 100%;
+    height: auto;
+    display: grid;
+    position: relative;
+}
+
+.options p {
+    margin-block: 1rem;
+    font-weight: 700;
+}
+
+.option {
+    width: 20vw;
+    height: 2rem;
+    margin-bottom: 1rem;
+    display: grid;
+    place-items: center;
+}
+
+.option input {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: var(--btnsecondary);
+    /* opacity: 0; */
+}
+
+.option label {
+    left: 0;
+    position: absolute;
+    color: var(--text);
+}
+
+/* .submit {
+    width: 20%;
+    height: 2rem;
+    position: absolute;
+    bottom: -2rem;
+    left: 50%;
+    background-color: var(--btnsecondary);
+    color: var(--text);
+    font-size: 1.125rem;
+    transform: translateX(-85%);
+} */
+
+button {
+    width: 14%;
+    /* position: absolute;
+    bottom: -3rem;
+    left: 30%; */
+    translate: 200%;
+    margin-block: 1.5rem;
+    font-family: inherit;
+    font-size: 20px;
+    background: var(--btnsecondary);
+    color: white;
+    padding: 0.7em 1em;
+    padding-left: 0.5em;
+    display: flex;
+    align-items: center;
+    border: none;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  
+  button span {
+    display: block;
+    margin-left: 0.3em;
+    letter-spacing: 1px;
+    transition: all 0.3s ease-in-out;
+  }
+  
+  button svg {
+    display: block;
+    transform-origin: center center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  button:hover .svg-wrapper {
+    animation: fly-1 0.6s ease-in-out infinite alternate;
+  }
+  
+  button:hover svg {
+    transform: translateX(2em) rotate(45deg) scale(1.125);
+  }
+  
+  button:hover span {
+    transform: translateX(5em);
+  }
+  
+  button:active {
+    transform: scale(0.95);
+  }
+  
+  @keyframes fly-1 {
+    from {
+      transform: translateY(0.1em);
+    }
+  
+    to {
+      transform: translateY(-0.1em);
+    }
+  }
+  

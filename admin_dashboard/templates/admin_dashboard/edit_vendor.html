@@ -1,0 +1,48 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit {{item.variation}}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit  {{vendor.vendor_name}}</h6>
+                <form id="vendor_form" method="post" action="{% url 'admin_dashboard:edit_vendor' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{vendor_edit_form.vendor_name}}
+                        <label for="floatingInput">Name of Vendor</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_edit_form.material_sold}}
+                        <label for="floatingSelect">What They Sell</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_edit_form.price_per_unit}}
+                        <label for="floatingInput">Price per Unit</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_edit_form.phone_number}}
+                        <label for="floatingInput">Vendor Phone Number</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_edit_form.email_address}}
+                        <label for="floatingInput">Vendor Email Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <br>
+                        {{vendor_edit_form.is_reliable}}
+                        <label class="form-check-label" for="exampleCheck1" style="color: var(--text); margin: .5rem 1rem;">
+                            Are they Reliable
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Vendor</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

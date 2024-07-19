@@ -1,0 +1,34 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit {{material_size.unit}}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit {{material_size.unit}}</h6>
+                <form id="material_size_form" method="post" action="{% url 'admin_dashboard:add_material_size' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{material_size_edit_form.unit}}
+                        <label for="floatingPassword">Unit of Measurement</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{material_size_edit_form.width}}
+                        <label for="floatingPassword">Width</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{material_size_edit_form.height}}
+                        <label for="floatingSelect">Height</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Unit</button>
+                </form>
+            </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,55 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit User{% endblock title %}
+
+{% block content %}
+<form method="get" action="{% url 'admin_dashboard:product_list' %}">
+    <input type="text" name="query" placeholder="Search Products" value="{{ query }}">
+    <button type="submit">Search</button>
+</form>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Recent Sales</h6>
+            <a href="">Show All</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Variation</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Material Used</th>
+                        <th scope="col">Cost per Unit</th>
+                        <th scope="col">Created by</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.item_name }}</td>
+                        <td>{{ product.variation }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.material_used }}</td>
+                        <td>{{ product.cost_per_unit }}</td>
+                        <td>{{ product.created_by }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:product_detail' product.pk %}">details</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:product_edit' product.pk %}">Edit</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:product_delete' product.pk %}">Delete</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "items/base.html" %} 
+ {% block title %}Shop{% endblock title %}
+
+{% block content %}
+<div class="listProduct">
+  {% for item in items %}
+    <div class="item">
+      <a href="/detail.html?id=1" class="img_container">
+        <img src="{{ item.image.url }}" alt="{{ item.name }} | {{ item.variation }}" />
+      </a>
+      <h2>{{ item.variation }}</h2>
+      <div class="price">{{ item.cost_per_unit }}</div>
+      
+        <button type="submit" name="item_id" form="add_to_cart" formaction="{% url 'cart:cart_add' %}" value="{{ item.id }}" id="add_to_cart" class="addCart">Add To Cart</button>
+    </div>
+  {% endfor %}
+</div>
+{% endblock content %}

@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+{% endblock css %}
+
+{% block title %}
+Login
+{% endblock title %}
+
+{% block content %}
+<div class="login_container">
+    <div class="login">
+        <form method="post" action=".">
+            {% csrf_token %}
+            <h2>Login</h2>
+            <hr>
+            <p>Explore the World!</p>
+            {{form.username}}
+            {{form.password}}
+            <button class="submit">Submit</button>
+            <p>
+                <a href="#">Forgot Password?</a>
+            </p>
+            <p>
+                You don't have an account?
+                <a href="{% url 'signup' %}" style="color: #24c231; margin-left: .5rem;">Create one</a>
+            </p>
+        </form>
+        <div class="pic">
+            <img src="{% static 'bgimage1.png'%}">
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,48 @@
+{% load static %}
+
+<header class="header" id="header">
+    <nav class="nav nav_container">
+        <a href="{% url 'home' %}" class="nav__logo">Paul's Creations</a>
+
+        <div class="nav__menu" id="nav-menu">
+            <ul class="nav__list">
+                <li class="nav__item">
+                    <a href="{% url "home" %}" class="nav__link active-link">
+                        <i class='bx bx-home-alt nav__icon'></i>
+                        <span class="nav__name">Home</span>
+                    </a>
+                </li>
+                
+                <li class="nav__item">
+                    <a href="{% url "about" %}" class="nav__link">
+                        <i class='bx bx-user nav__icon'></i>
+                        <span class="nav__name">About</span>
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="{% url 'items:shop' %}" class="nav__link">
+                        <i class='bx bx-book-alt nav__icon'></i>
+                        <span class="nav__name">Shop</span>
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#projects" class="nav__link">
+                        <i class='bx bx-briefcase-alt nav__icon'></i>
+                        <span class="nav__name">Portfolio</span>
+                    </a>
+                </li>
+
+                <li class="nav__item">
+                    <a href="#contacts" class="nav__link">
+                        <i class='bx bx-message-square-detail nav__icon'></i>
+                        <span class="nav__name">Contactme</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <img src="{% static 'logo_pc.png' %}" alt="company logo" class="nav__img">
+    </nav>
+</header>

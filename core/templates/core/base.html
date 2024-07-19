@@ -1,0 +1,68 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock title %} | Paul`s Creations</title>
+    {% block css %}{% endblock css %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/loader.css' %}">
+    <link rel="stylesheet" href=" {% static 'css/footer.css' %}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="icon" type="image/png" href="{% static 'img/logo_pc.png' %}">
+    <script src="https://kit.fontawesome.com/cfb8856fbe.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    {% include "core/loader.html" %}
+    <div id="content" style="display: none;">
+
+        {% include "core/navbar.html" %}
+
+        {% block content %}{% endblock content %}
+        
+        {% include "core/footer.html" %}
+    </div>
+    <script src="{% static 'js/script.js'%}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        //modalcontrol
+    
+        const openButton = document.querySelector("[data-open-modal]")
+        const closeButton = document.querySelector("[data-close-modal]")
+        const modal = document.querySelector("[data-modal]")
+    
+        openButton.addEventListener("click", () => {
+            modal.showModal()
+        })
+    
+        closeButton.addEventListener("click", () =>{
+            modal.close()
+        })
+    
+        modal.addEventListener("click", e => {
+            const dialogDimensions = modal.getBoundingClientRect()
+            if (
+                e.clientX < dialogDimensions.left ||
+                e.clientX > dialogDimensions.right ||
+                e.clientY < dialogDimensions.top ||
+                e.clientY > dialogDimensions.bottom 
+            ){
+                modal.close()
+            }
+        })
+        /*=============== CHANGE BACKGROUND HEADER ===============*/
+        function scrollHeader(){
+            const header = document.getElementById('header')
+            // When the scroll is greater than 80 viewport height, add the scroll-header class to the header tag
+            if(this.scrollY >= 80) header.classList.add('scroll-header'); else header.classList.remove('scroll-header')
+        }
+        window.addEventListener('scroll', scrollHeader)
+
+    </script>
+</body>
+</html>

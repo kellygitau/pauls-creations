@@ -1,0 +1,53 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit {{item.variation}}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit {{item.variation}}</h6>
+                <form method="post" action="." enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{edit_item_form.category}}
+                        <label for="floatingSelect">Choose The Category the Item belongs to</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{edit_item_form.item_name}}
+                        <label for="floatingSelect">Choose The Item</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{edit_item_form.variation}}
+                        <label for="floatingInput">Variation/ Type of Item</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{edit_item_form.image}}
+                        <label for="floatingfile">Image Of Item</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{edit_item_form.material_or_service}}
+                        <label for="floatingSelect">Choose the Material Best Suited for the Product</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{edit_item_form.cost_per_unit}}
+                        <label for="floatingInput">Cost Per Item for the Item</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{edit_item_form.paper_size}}
+                        <label for="floatingSelect">What Size of paper does the Item Require?</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{edit_item_form.description}}
+                        <label for="floatingTextarea">Add item Description</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

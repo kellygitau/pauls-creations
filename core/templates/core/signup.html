@@ -1,0 +1,38 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/user.css' %}">
+{% endblock css %}
+
+{% block title %}
+Sign-up
+{% endblock title %}
+
+{% block content %}
+<div class="login_container">
+    <div class="login">
+        <form method="post" action=".">
+            <h2>Login</h2>
+            <hr>
+            <p>Explore the World!</p>
+            {{form.username}}
+            {{form.email}}
+            {{form.password1}}
+            {{form.password2}}
+            <button class="submit">Submit</button>
+            <p>
+                <a href="#">Forgot Password?</a>
+            </p>
+            <p>
+                You have an account?
+                <a href="{% url 'login' %}" style="color: #24c231; margin-left: .5rem;">Sign-in</a>
+            </p>
+        </form>
+        <div class="pic">
+            <img src="{% static 'bgimage1.png'%}">
+        </div>
+    </div>
+</div>
+{% endblock content %}

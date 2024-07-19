@@ -1,0 +1,33 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit {{paper_size.name}}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit {{paper_size.name}}</h6>
+                <form id="paper_size_form" method="post" action="{% url 'admin_dashboard:edit_paper_size' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{paper_size_edit_form.name}}
+                        <label for="floatingInput">Size of Paper</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{paper_size_edit_form.width}}
+                        <label for="floatingPassword">Width of Paper</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{paper_size_edit_form.height}}
+                        <label for="floatingSelect">Height of Paper</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Paper Size</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

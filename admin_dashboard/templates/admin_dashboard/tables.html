@@ -1,0 +1,228 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Data{% endblock title %}
+
+{% block styles %}
+<style>
+    .pagination a.active {
+        background-color: #007bff;
+        color: white;
+        border: 1px solid #007bff;
+    }
+</style>
+{% endblock styles %}
+
+{% block search_input %}
+<form class="d-none d-md-flex ms-4" method="get" action="{% url 'admin_dashboard:tables' %}">
+    <div class="form-floating mb-3">
+        <input name="query" class="form-control border-0" id="floatingInput" type="text" value="{{ query }}" placeholder="Search All Databases..." style="color: var(--btnprimary);">
+    <label for="floatingInput">Search All Databases...</label>
+    </div>
+</form>
+{% endblock search_input %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Categories</h6>
+            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:add_category' %}">Add Category</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Category Name</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for category in categories %}
+                    <tr>
+                        <td>{{ category.id }}</td>
+                        <td>{{ category.name }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:delete_category' category.id %}">Delete</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:edit_category' category.id %}">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Products</h6>
+            {% if filter_mode == 'all' %}
+                <a href="{% url 'admin_dashboard:tables' %}?filter=filtered">Show Filtered</a>
+            {% else %}
+                <a href="{% url 'admin_dashboard:tables' %}?filter=all">Show All</a>
+            {% endif %}
+            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:add_item' %}">Add Item</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Item Category</th>
+                        <th scope="col">Item Name</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in items %}
+                    <tr>
+                        <td>{{ item.id }}</td>
+                        <td>{{ item.category }}</td>
+                        <td>{{ item.name }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:item_delete' item.id %}">Delete</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:edit_items' item.id %}">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% comment %} <div class="pagination d-flex align-items-center justify-content-between mb-4">
+                {% if items.has_previous %}
+                    <a class="btn btn-sm btn-primary" href="?product_page=1">&laquo; First</a>
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ items.previous_page_number }}">&lsaquo; Previous</a>
+                {% endif %}
+        
+                {% for num in products.paginator.page_range %}
+                    {% if items.number == num %}
+                        <a class="btn btn-sm btn-primary" href="?product_page={{ num }}" class="active">{{ num }}</a>
+                    {% else %}
+                        <a class="btn btn-sm btn-primary" href="?product_page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+        
+                {% if items.has_next %}
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ items.next_page_number }}">Next &rsaquo;</a>
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ items.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </div> {% endcomment %}
+        </div>
+    </div>
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Product/ Service Variations</h6>
+            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:add_product' %}">Add Product</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Variation</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in products %}
+                    <tr>
+                        <td>{{ product.id }}</td>
+                        <td>{{ product.category }}</td>
+                        <td>{{ product.item_name }}</td>
+                        <td>{{ product.variation }}</td>
+                        <td>{{ product.material_used }}</td>
+                        <td>{{ product.cost_per_unit }}</td>
+                        {% comment %} <td>{{ product.item_name }}</td>
+                        <td>{{ product.item_name }}</td> {% endcomment %}
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:product_delete' product.id %}">Delete</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:product_edit' product.id %}">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% comment %} <div class="pagination d-flex align-items-center justify-content-between mb-4">
+                {% if products.has_previous %}
+                    <a class="btn btn-sm btn-primary" href="?product_page=1">&laquo; First</a>
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ products.previous_page_number }}">&lsaquo; Previous</a>
+                {% endif %}
+        
+                {% for num in products.paginator.page_range %}
+                    {% if products.number == num %}
+                        <a class="btn btn-sm btn-primary" href="?product_page={{ num }}" class="active">{{ num }}</a>
+                    {% else %}
+                        <a class="btn btn-sm btn-primary" href="?product_page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+        
+                {% if products.has_next %}
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ products.next_page_number }}">Next &rsaquo;</a>
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ products.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </div> {% endcomment %}
+        </div>
+    </div>
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Our Vendors</h6>
+            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:add_vendor' %}">Add Vendor</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr>
+                        <th scope="col">id</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Variation</th>
+                        <th scope="col">Material</th>
+                        <th scope="col">Cost</th>
+                        <th scope="col">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for vendor in vendors %}
+                    <tr>
+                        <td>{{ vendor.id }}</td>
+                        <td>{{ vendor.vendor_name }}</td>
+                        <td>{{ vendor.material_sold }}</td>
+                        <td>{{ vendor.price_per_unit }}</td>
+                        <td>{{ vendor.phone_number }}</td>
+                        <td>{{ vendor.email_address }}</td>
+                        <td>{{ vendor.is_reliable }}</td>
+                        <td>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:vendor_delete' vendor.id %}">Delete</a>
+                            <a class="btn btn-sm btn-primary" href="{% url 'admin_dashboard:edit_user' vendor.id %}">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div class="pagination d-flex align-items-center justify-content-between mb-4">
+                {% if vendor_list.has_previous %}
+                    <a href="?product_page=1">&laquo; First</a>
+                    <a href="?product_page={{ vendor_list.previous_page_number }}">&lsaquo; Previous</a>
+                {% endif %}
+        
+                {% for num in vendor_list.paginator.page_range %}
+                    {% if vendor_list.number == num %}
+                        <a class="btn btn-sm btn-primary" href="?product_page={{ num }}" class="active">{{ num }}</a>
+                    {% else %}
+                        <a class="btn btn-sm btn-primary" href="?product_page={{ num }}">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+        
+                {% if vendor_list.has_next %}
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ vendor_list.next_page_number }}">Next &rsaquo;</a>
+                    <a class="btn btn-sm btn-primary" href="?product_page={{ vendor_list.paginator.num_pages }}">Last &raquo;</a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

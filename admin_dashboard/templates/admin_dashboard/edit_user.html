@@ -1,0 +1,40 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit User{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="col-sm-12 col-xl-6"> 
+        <div class="bg-light rounded h-100 p-4">
+            <h6 class="mb-4">Add new Product or Service</h6>
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-floating mb-3">
+                    {{edit_user_form.username}}
+                    <label for="floatingInput">User's Username</label>
+                </div>
+                <div class="form-floating mb-3">
+                    {{edit_user_form.first_name}}
+                    <label for="floatingInput">Their First Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    {{edit_user_form.last_name}}
+                    <label for="floatingInput">Their last Name</label>
+                </div>
+                <div class="form-floating mb-3">
+                    {{edit_user_form.email}}
+                    <label for="floatingEmail">Their Email Address</label>
+                </div>
+                <div class="form-floating mb-3">
+                    <br>
+                    {{edit_user_form.is_staff}}
+                    <label for="gridCheck" class="form-check-label" style="margin-left: 1rem; margin-top: 0.5rem; color: var(--text);">Are they a staff member?</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,90 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}{% endblock title %} | Paul's Creations</title>
+    <link rel="stylesheet" href="{% static 'css/shop.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/footer.css'%}" />
+    <link rel="stylesheet" href="{% static 'css/loader.css'%}" />
+    <script
+      src="https://kit.fontawesome.com/cfb8856fbe.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+
+    <script src="{% static 'js/cart_modal.js'%}"></script>
+  </head>
+  <body>
+    {% include "items/loader.html" %}
+      <div class="shop_container" id="content">
+        {% include "items/shop_header.html" %}
+        <div id="contentTab">
+          {% block content %}{% endblock content %}
+        </div>
+      </div>
+      {% include "items/footer.html" %}
+      <dialog id="pc_checkout" data-modal>
+        <h2 class="checkout_header">Shopping Cart</h2>
+        <div class="checkout_container">
+          <div class="checkout_items">
+            <div class="item_thumbnail">
+              <img src="img/A5_funeral_program.png" alt="" />
+            </div>
+            <p class="item_label">Lorem, ipsum.</p>
+            <span class="quantity">
+              <input
+                type="number"
+                name="item_quantity"
+                id="item_quantity"
+                placeholder="Quantity"
+              />
+            </span>
+            <p class="item_price">ksh. 1234</p>
+          </div>
+          <!-- <div class="checkout_items">
+                        <div class="item_thumbnail">
+                            <img src="img/A5_funeral_program.png" alt="">
+                        </div>
+                        <p class="item_label">
+                            Lorem, ipsum.
+                        </p>
+                        <p class="item_price">
+                            ksh. 1234
+                        </p>
+                    </div>
+                    <div class="checkout_items">
+                        <div class="item_thumbnail">
+                            <img src="img/A5_funeral_program.png" alt="">
+                        </div>
+                        <p class="item_label">
+                            Lorem, ipsum.
+                        </p>
+                        <p class="item_price">
+                            ksh. 1234
+                        </p>
+                    </div>
+                    <div class="checkout_items">
+                        <div class="item_thumbnail">
+                            <img src="img/A5_funeral_program.png" alt="">
+                        </div>
+                        <p class="item_label">
+                            Lorem, ipsum.
+                        </p>
+                        <p class="item_price">
+                            ksh. 1234
+                        </p>
+                    </div> -->
+        </div>
+        <button data-close-modal class="close">
+          <i class="fa-sharp fa-solid fa-xmark"></i>
+        </button>
+      </dialog>
+      <!-- Code injected by live-server -->
+    <div id="temporaryContent"></div>
+  </body>
+</html>

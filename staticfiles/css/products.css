@@ -1,0 +1,195 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --bg: #07051a;
+    --text: #efeefc;
+    --btnprimary: #03020d;
+    --btnsecondary: #24c231;
+    --font_family: lato;
+    --fontsize: 1.5rem;
+    --padding: 1rem;
+    --margin: 10px;
+    --width: 100dvw;
+    --height: 100dvh;
+    --gradient: linear-gradient(180deg, #e64980 5%, #ff8787 95%);
+    --logo-bg-color: #e5e6e8;
+    --letter-color: #9b94c8;
+    --pen-color: #04a551;
+    --typewriter-time: 6s;
+    --scroll_padding: 3rem;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    color: #f2f3f4;
+    background-color: var(--bg);
+    overflow: hidden;
+}
+
+a {
+    color: #f2f3f4;
+    text-decoration: none;
+}
+
+ul {
+    list-style: none;
+}
+
+.product-filter {
+    width: 100%;
+    height: 100vh;
+}
+
+.navigation {
+    width: calc(100vw - 10px);
+    height: 3rem;
+    background-color: var(--btnprimary);
+    top: var(--scroll_padding);
+    left: 5px;
+    position: absolute;
+    border-radius: 5px;
+    
+}
+
+.filter {
+    position: relative;
+    display: grid;
+    height: 100%;
+    grid-auto-flow: column;
+    place-items: center;
+    font-size: 1.125rem;
+}
+
+.filter-button {
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: #f2f3f4;
+    font-size: 1.125rem;
+    cursor: pointer;
+    padding-inline: 1rem;
+}
+
+/* .filter-button:hover {
+    letter-spacing: .5px;
+    transform: translateX(2.5%);
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    transition: all .4s ease-in-out;
+} */
+
+.filter-button.active {
+    pointer-events: none;
+    background: var(--btnsecondary);
+    color: var(--accent);
+    box-shadow: 0 0 0.75rem rgba(83, 56, 191, 0.2);
+    border-radius: 100vw;
+    width: auto;
+    padding-inline: 10px;
+    padding-block: 5px;
+}
+
+.element_wrapper {
+    width: 100%;
+    height: calc(100% - (var(--scroll_padding + 2rem)));
+
+}
+
+.element-list {
+    width: 75%;
+    height: 75%;
+    position: absolute;
+    top: calc(var(--scroll_padding) + 2rem);
+    left: 50%;
+    margin-top: 2rem;
+    display: grid;
+    transform: translateX(-50%);
+    grid-template-columns: repeat(2, 1fr); 
+    grid-template-rows: repeat(9, 1fr);  
+    gap: 2rem;
+}
+
+.element {
+    position: relative;
+    border-radius: 5px;
+    border-bottom: #f2f3f4 2px solid;
+    text-align: center;
+    color: #f2f3f4;
+    cursor: pointer;
+    transition: all .5s ease-in-out;
+}
+
+.element:hover {
+    letter-spacing: 1px;
+    color: var(--btnsecondary);
+    border-bottom: var(--btnsecondary) 2px solid;
+}
+
+/* .element:hover {
+    transform: perspective(1000px);
+    translate: 0%, 10%;
+    transition: all .5s ease-in;
+} */
+
+@media screen and (max-width: 767px) {
+    body {
+        width: 100vw;
+        height: 100dvh;
+        overflow-x: hidden;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
+    }
+    .navigation {
+        width: calc(100% - 5px);
+        height: 6.5rem;
+        padding-bottom: .5rem;
+        position: absolute;
+        top: 3rem;
+        z-index: 1000;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .filter {
+        width: auto;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); 
+        grid-template-rows: repeat(3, 1fr);    
+        gap: 5px;
+        font-size: 1rem; 
+    }
+    .filter-button.active {
+        padding-inline: 5px;
+        padding-block: 0;
+        border-radius: 7.5px;
+    }
+    /* .list-items {
+        text-decoration: underline;
+    } */
+    .wrapper {
+        position: absolute;
+        height: 75%;
+        width: 100%;
+        bottom: 5rem;
+        display: grid;
+        place-items: center;
+    }
+    .element-list {
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        gap: 1rem;
+    }
+  }
+
+::view-transition-group(root) {
+    animation-duration: .75s;
+}

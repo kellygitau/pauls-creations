@@ -1,0 +1,358 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}
+Admin Forms
+{% endblock title %}
+
+{% block content %}
+ <!-- Form Start -->
+ <div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add a Category For Products or Service</h6>
+                <form id="category_form" method="post" action="{% url 'admin_dashboard:add_category' %}">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{category_form.name}}
+                        <label for="floatingInput">Enter Category Name</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Category</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add a Product or Service Type</h6>
+                <form id="item_form" method="post" action="{% url 'admin_dashboard:add_item' %}">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{item_form.category}}
+                        <label for="floatingSelect">Choose the Category the Item belongs to</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{item_form.name}}
+                        <label for="floatingInput">Name Of Product/ Service</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Item</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6"> 
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add new Product or Service</h6>
+                <form id="product_form" method="post" action="{% url 'admin_dashboard:add_product' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{product_form.category}}
+                        <label for="floatingSelect">Choose The Category the Item belongs to</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{product_form.item_name}}
+                        <label for="floatingSelect">Choose The Item</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{product_form.variation}}
+                        <label for="floatingInput">Variation/ Type of Item</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{product_form.material_used}}
+                        <label for="floatingInput">Material Used for the Item</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{product_form.image}}
+                        <label for="floatingfile">Image Of Item</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{product_form.material_or_service}}
+                        <label for="floatingSelect">Choose the Material Best Suited for the Product</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{product_form.cost_per_unit}}
+                        <label for="floatingInput">Cost Per Item for the Item</label>
+                    </div>
+                    <div class="form-floating" style="margin-bottom: 1rem;">
+                        {{product_form.paper_size}}
+                        <label for="floatingSelect">What Size of paper does the Item Require?</label>
+                    </div>
+                    <div class="form-floating"style="margin-bottom: 1rem;">
+                        {{product_form.description}}
+                        <label for="floatingTextarea">Add item Description</label>
+                    </div>
+                    {% comment %} <div class="form-floating">
+                        {{new_item_form.description}}
+                        <label for="floatingTextarea">Comments</label>
+                    </div> {% endcomment %}
+                    <button type="submit" class="btn btn-primary">Add Item</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add Vendor</h6>
+                <form id="vendor_form" method="post" action="{% url 'admin_dashboard:add_vendor' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{vendor_form.vendor_name}}
+                        <label for="floatingInput">Name of Vendor</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_form.material_sold}}
+                        <label for="floatingSelect">What They Sell</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_form.price_per_unit}}
+                        <label for="floatingInput">Price per Unit</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_form.phone_number}}
+                        <label for="floatingInput">Vendor Phone Number</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{vendor_form.email_address}}
+                        <label for="floatingInput">Vendor Email Address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <br>
+                        {{vendor_form.is_reliable}}
+                        <label class="form-check-label" for="exampleCheck1" style="color: var(--text); margin: .5rem 1rem;">
+                            Are they Reliable
+                        </label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Vendor</button>
+                </form>
+            </div>
+        </div>
+        {% comment %} <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add New Materials</h6>
+                <form method="post" action="." enctype="multipart/form-data">
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput"
+                            placeholder="name@example.com">
+                        <label for="floatingInput">Email address</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="password" class="form-control" id="floatingPassword"
+                            placeholder="Password">
+                        <label for="floatingPassword">Password</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <select class="form-select" id="floatingSelect"
+                            aria-label="Floating label select example">
+                            <option selected>Open this select menu</option>
+                            <option value="1">One</option>
+                            <option value="2">Two</option>
+                            <option value="3">Three</option>
+                        </select>
+                        <label for="floatingSelect">Works with selects</label>
+                    </div>
+                    <div class="form-floating">
+                        <textarea class="form-control" placeholder="Leave a comment here"
+                            id="floatingTextarea" style="height: 150px;"></textarea>
+                        <label for="floatingTextarea">Comments</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Sign in</button>
+                </form>
+            </div>
+        </div> {% endcomment %}
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Add Materials or Service Here</h6>
+                <form id="material_form" method="post" action="{% url 'admin_dashboard:add_material' %}">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{material_form.material}}
+                        <label for="floatingInput">Name of Material/ Service</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Material/ Service</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Paper Sizes</h6>
+                <form id="paper_size_form" method="post" action="{% url 'admin_dashboard:add_paper_size' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{paper_size_form.name}}
+                        <label for="floatingInput">Size of Paper</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{paper_size_form.width}}
+                        <label for="floatingPassword">Width of Paper</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{paper_size_form.height}}
+                        <label for="floatingSelect">Height of Paper</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Paper Size</button>
+                </form>
+            </div>
+        </div>
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Material Sizes</h6>
+                <form id="material_size_form" method="post" action="{% url 'admin_dashboard:add_material_size' %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{material_size_form.unit}}
+                        <label for="floatingPassword">Unit of Measurement</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{material_size_form.width}}
+                        <label for="floatingPassword">Width</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{material_size_form.height}}
+                        <label for="floatingSelect">Height</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Unit</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Form End -->
+
+<script>
+    $(document).ready(function(){
+        $('#paper_size_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_paper_size' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+        $('#cetegory_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_category' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+        $('#item_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_item' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+        $('#product_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_product' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+        $('#vendor_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_vendor' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+        $('#material_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_material' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+        $('#material_size_form').submit(function(event){
+            event.preventDefault();
+            var form = $(this);
+            $.ajax({
+                url: "{% url 'admin_dashboard:add_material_size' %}",
+                type: "POST",
+                data: new FormData(this),
+                processData: false,
+                contentType: false,
+                success: function(response) {
+                    if(response.success) {
+                        alert(response.message);
+                        form.trigger("reset");
+                    } else {
+                        alert("Error: " + JSON.stringify(response.errors));
+                    }
+                }
+            });
+        });
+    });
+    
+</script>
+{% endblock content %}

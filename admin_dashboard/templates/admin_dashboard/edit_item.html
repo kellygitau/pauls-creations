@@ -1,0 +1,29 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Edit {{item.variation}}{% endblock title %}
+
+{% block content %}
+<div class="container-fluid pt-4 px-4">
+    <div class="row vh-100 bg-light rounded align-items-center justify-content-center mx-0">
+        <div class="col-sm-12 col-xl-6">
+            <div class="bg-light rounded h-100 p-4">
+                <h6 class="mb-4">Edit {{item.variation}}</h6>
+                <form id="item_edit_form" method="post" action=".">
+                    {% csrf_token %}
+                    <div class="form-floating mb-3">
+                        {{item_edit_form.category}}
+                        <label for="floatingSelect">Choose the Category the Item belongs to</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        {{item_edit_form.name}}
+                        <label for="floatingInput">Name Of Product/ Service</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

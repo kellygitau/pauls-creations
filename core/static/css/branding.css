@@ -1,0 +1,290 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+:root {
+    --bg: #07051a;
+    --text: #efeefc;
+    --btnprimary: #03020d;
+    --btnsecondary: #24c231;
+    --font_family: lato;
+    --fontsize: 1.5rem;
+    --padding: 1rem;
+    --margin: 10px;
+    --width: 100dvw;
+    --height: 100dvh;
+    --gradient: linear-gradient(180deg, #e64980 5%, #ff8787 95%);
+    --logo-bg-color: #e5e6e8;
+    --letter-color: #9b94c8;
+    --pen-color: #04a551;
+    --typewriter-time: 6s;
+    --scroll_padding: 5rem;
+    --header-height: 3rem;
+}
+
+html {
+    scroll-snap-type: y proximity;
+    scroll-behavior: smooth;
+    scroll-padding: 2.5rem;
+    width: 100vw;
+    height: auto;
+    overflow-x: hidden;
+}
+
+a {
+    text-decoration: none;
+    color: var(--text);
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: grid;
+    background: var(--bg);
+    color: var(--text);
+    width: 100%;
+    height: auto;
+}
+
+.branding-container {
+    margin-top: 2.5rem;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 50% 50%;
+    column-count: 2;
+    column-gap: 1.5rem;
+    padding-inline: 1rem;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 40% 60%;
+    column-count: 2;
+    background-color: var(--letter-color);
+    padding: 1rem 35px;
+    border-radius: 10px;
+}
+
+.background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.background img {
+    position: absolute;
+    filter: drop-shadow(0 0 10px var(--bg));
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: grid;
+}
+
+.content h2 {
+    font-size: var(--fontsize);
+    background: linear-gradient(to right, var(--logo-bg-color)30%, var(--text));
+    background-clip: text;
+    font-weight: 800;
+    margin-block: .5rem;
+    letter-spacing: 1.5px;
+    color: transparent;
+}
+
+.content p {
+    font-size: 1.125rem;
+    color: var(--text);
+    width: 100%;
+    line-height: 1.5;
+    margin-top: .5rem;
+}
+
+.chips {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(3, auto);
+    gap: 10px;
+}
+
+.chip {
+    font-size: .875rem;
+    font-weight: 600;
+    background-color: var(--btnprimary);
+    border-radius: 100vw;
+    display: grid;
+    place-items: center;
+    width: auto;
+    padding-block: .25rem;
+    margin-top: 1rem;
+}
+
+.action-button {
+    margin-block: 1rem;
+    display: grid;
+    grid-auto-flow: column;
+    column-count: 2;
+    column-gap: 1.5rem;
+}
+
+.action-button a {
+    font-size: 1.125rem;
+    font-weight: 600;
+    background-color: var(--text);
+    color: var(--bg);
+    border-radius: 5px;
+    text-align: center;
+}
+
+@media screen and (width <= 524px) {
+
+    .branding-container {
+        position: relative;
+        width: 100%;
+        overflow-x: hidden; 
+        grid-auto-flow: row;
+        row-gap: 1.5rem;
+        padding-inline: 1rem;
+    }
+
+    .card {
+        margin: 1rem 1.25rem;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        grid-template-rows: 45% 55%;
+        width: 90vw;
+        height: 85vh;
+        grid-auto-flow: row;
+        row-gap: 1.5rem;
+        margin-inline: auto;
+    }
+    .background {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    /* .background img {
+        width: 100%;
+        height: 40%;
+    } */
+    .content {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    .content p,
+    .content h2 {
+        width: 100%;
+    }
+    .content p {
+        font-size: 1rem;
+        padding: 0;
+        margin: 0;
+    }
+    .chips {
+        width: 100%;
+        display: grid;
+    }
+    .chip {
+        font-size: .75rem;
+        font-weight: 600;
+        background-color: var(--btnprimary);
+        border-radius: 100vw;
+        display: grid;
+        place-items: center;
+        width: auto;
+        padding-block: .25rem;
+        margin-top: 1rem;
+    }
+    .action-button {
+        margin-block: 1rem;
+        display: grid;
+        grid-auto-flow: column;
+        column-count: 1;
+        column-gap: 1.5rem;
+        width: 100%;
+    }
+    .action-button a {
+        font-size: 1rem;
+        font-weight: 600;
+        background-color: var(--text);
+        color: var(--bg);
+        border-radius: 5px;
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .branding-container {
+        position: relative;
+        width: 100%;
+        grid-auto-flow: column;
+        column-count: 2;
+        grid-template-columns: 50% 50%;
+        margin-inline: auto;
+        overflow-x: hidden; 
+    }
+    .card {
+        position: relative;
+        width: 45vw;
+        height: 75vh;
+        grid-auto-flow: row;
+        grid-template-rows: 45% 55%;        
+        margin-inline: auto;
+        margin-block: 1rem;
+    }
+    .background {
+        position: absolute;
+        width: 100%;
+        height: 45%;
+    }
+    .background img {
+        width: 100%;
+        height: 100%;
+    }
+    .content {
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 55%;
+        padding-inline: .5rem;
+        margin-inline: auto;
+    }
+    .chips {
+        width: 95%;
+        margin: auto;
+        gap: 5px;
+    }
+    .chip {
+        padding-right: .25rem;
+    }
+    .action-button {
+        width: 95%;
+        margin-block: 1rem;
+        display: grid;
+        grid-auto-flow: column;
+    }
+}

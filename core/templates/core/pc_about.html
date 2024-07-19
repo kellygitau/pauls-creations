@@ -1,0 +1,180 @@
+{% extends "core/base.html" %}
+
+{% load static %}
+
+{% block title %}About{% endblock title %}
+
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="about_container" id="about">
+    <section class="about_hero">
+        <div class="hero_text">
+            <span class="about_hero_header">
+                <h2>Hi There 👋</h2>
+                <h1><b>We're Paul's Creations</b></h1>
+            </span>
+            <p class="about_hero_description">
+                Where we are dedicated to delivering top-notch printing, branding, and stationery solutions tailored to your needs. 
+                From vibrant business cards to compelling brand strategies, we ensure your vision comes to life.
+            </p>
+        </div>
+        <div class="about_hero_image_container">
+            <img src="{% static 'logo_pc.png'%}" alt="about us" class="about_hero_image">
+        </div>
+    </section>
+
+    <section class="our_story_pc">
+            <h2>
+                Our Story
+            </h2>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Magnam impedit quae nulla veritatis voluptates suscipit 
+                velit beatae incidunt ex officiis eligendi nihil architecto, 
+                voluptate tempora inventore magni a iure? Laboriosam, libero quis. 
+                Qui at asperiores consectetur eaque provident optio exercitationem, 
+                expedita nostrum atque, 
+                nisi voluptatem cupiditate est nulla accusamus recusandae eveniet maiores dolorum, vel dolore. 
+                Suscipit odio est atque, expedita tempore dolore nobis tenetur perferendis laboriosam omnis 
+                cumque recusandae illo officiis iste cupiditate eos sit molestias. 
+                Distinctio labore repudiandae tempora modi atque magnam earum dolor doloribus perferendis odio eligendi, 
+                ut quia incidunt temporibus provident nulla molestias culpa voluptatem qui enim! Dolorum, quia.
+            </p>
+    </section>
+    <section class="about_pc_stats">
+        <h2 class="pc_stats_header">As a company we have Accomplished a lot:</h2>
+        <p class="pc_stats_description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Laborum ducimus nam doloremque, 
+            exercitationem soluta quisquam nihil recusandae deserunt 
+            blanditiis quas distinctio at odio? 
+            Consequuntur, cumque. Obcaecati quidem maiores, 
+            nemo nesciunt molestias reiciendis ipsa quod placeat distinctio ex mollitia? 
+            Suscipit animi voluptatum, unde modi alias numquam ducimus magni ratione, 
+            earum laboriosam atque ipsam.
+        </p>
+        <ul class="pc_stats_list">
+            <li class="pc_stats" style="--pc_stat_bg: #2f1561;">
+                <b class="stat">600</b>
+                <p class="stat_label">Projects completed</p>
+                <p class="stat_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, odio?
+                </p>
+            </li>
+            <li class="pc_stats" style="--pc_stat_bg: #532e97;">
+                <b class="stat">100</b>
+                <p class="stat_label">Recurring clients</p>
+                <p class="stat_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio, sapiente!
+                </p>
+            </li>
+            <li class="pc_stats"  style="--pc_stat_bg: #724fb4;">
+                <b class="stat">27%</b>
+                <p class="stat_label">Average Customer savings</p>
+                <p class="stat_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore, ratione.
+                </p>
+            </li>
+            <li class="pc_stats" style="--pc_stat_bg: #1e0f38;">
+                <b class="stat">98%</b>
+                <p class="stat_label">Customer satisfaction rate</p>
+                <p class="stat_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Id, beatae?
+                </p>
+            </li>
+        </ul>
+    </section>
+
+    <section class="pc_values">
+        <h2 class="pc_values_header">Our Core Values</h2>
+        <p class="pc_values_description">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+            Placeat molestiae dolorum quia alias rem sequi nulla neque. 
+            Corporis, excepturi hic distinctio exercitationem, 
+            nemo est illum repudiandae praesentium velit a aliquam laborum 
+            recusandae optio. 
+            Commodi rem pariatur impedit minus obcaecati vel quaerat voluptate 
+            voluptatibus molestias aspernatur molestiae excepturi, eos esse, alias maiores.
+        </p>
+        <ul class="pc_values_list">
+            <li class="value">
+                <h3 class="value_name">Transparency</h3>
+                <p class="value_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quo sapiente officiis, velit sunt iure nemo magnam. 
+                    Aperiam minima nemo veritatis! Unde, non quam? 
+                    Dolor veniam obcaecati accusamus, cum illo unde.
+                </p>
+            </li>
+            <li class="value">
+                <h3 class="value_name">Continuous Improvement</h3>
+                <p class="value_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quo sapiente officiis, velit sunt iure nemo magnam. 
+                    Aperiam minima nemo veritatis! Unde, non quam? 
+                    Dolor veniam obcaecati accusamus, cum illo unde.
+                </p>
+            </li>
+            <li class="value">
+                <h3 class="value_name">Customer Focus</h3>
+                <p class="value_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quo sapiente officiis, velit sunt iure nemo magnam. 
+                    Aperiam minima nemo veritatis! Unde, non quam? 
+                    Dolor veniam obcaecati accusamus, cum illo unde.
+                </p>
+            </li>
+            <li class="value">
+                <h3 class="value_name">Gratitude</h3>
+                <p class="value_description">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                    Quo sapiente officiis, velit sunt iure nemo magnam. 
+                    Aperiam minima nemo veritatis! Unde, non quam? 
+                    Dolor veniam obcaecati accusamus, cum illo unde.
+                </p>
+            </li>
+        </ul>
+    </section>
+    <section class="want_join_us">
+        <h3 class="want_join_us_header">Want to Join Us?</h3>
+        <p class="want_join_us_description">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Cumque libero molestiae, voluptate officiis delectus qui.
+        </p>
+        <a href="#" class="want_to_join_us_cta">
+            Click Here to Learn More &rightarrow;
+        </a>
+    </section>
+    <section class="office_location">
+        <h2 class="office_location_header">
+            Where to Find Us
+        </h2>
+        <p class="office_location_directions">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+            Neque ea quae esse incidunt impedit saepe omnis quia eum. 
+            Laudantium totam beatae perferendis sint quibusdam in ea, 
+            fugit magni animi? Ad?
+        </p>
+        <button class="map" data-open-modal>
+            Get the location &rightarrow;
+        </button>
+        <h3>
+            Thanks for Visiting Our Website 👋
+        </h3>
+        <dialog id="pc_locations" data-modal>
+            <div class="map_container">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.817672352351!2d36.8270610740807!3d-1.2832486356209545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x182f112be319443d%3A0x96f1beb247293d17!2sPaul&#39;s%20Creations!5e0!3m2!1sen!2ske!4v1717212900475!5m2!1sen!2ske" 
+                width="600" height="450" style="border:0;" allowfullscreen="" 
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+                <button data-close-modal class="close">
+                    <i class="fa-sharp fa-solid fa-xmark"></i>
+                </button>
+            </div>
+        </dialog>
+    </section>
+</div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+{% extends "admin_dashboard/base.html" %}
+
+{% load static %}
+
+{% block title %}Delete | {{material.material}}{% endblock title %}
+
+{% block content %}
+<form id="delete-form-{{ material.pk }}" action="{% url 'admin_dashboard:delete_paper_size' material.pk %}" method="post">
+    {% csrf_token %}
+    <button type="button" onclick="confirmDeletion({{ material.pk }})">Delete</button>
+</form>
+
+<script>
+    function confirmDeletion(pk) {
+        if (confirm("Are you sure you want to delete this item?")) {
+            document.getElementById('delete-form-' + pk).submit();
+        }
+    }
+</script>
+{% endblock content %}
